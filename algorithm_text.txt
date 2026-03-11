@@ -1,0 +1,54 @@
+Physiological Variables for Pain Quantification Device
+1. Heart Rate (HR)
+Heart rate is calculated from the time interval between two consecutive heartbeats (RR interval).
+Formula:
+HR = 60 / RR
+Where:
+HR = Heart rate (beats per minute)
+RR = Time interval between two heartbeats (seconds)
+Example:
+If RR = 0.8 s
+HR = 60 / 0.8 = 75 bpm
+2. Heart Rate Variability (HRV)
+HRV represents the variation between consecutive heartbeats.
+Standard Deviation of NN intervals (SDNN):
+SDNN = sqrt( (1/(N-1)) * Σ(RRi - RRmean)^2 )
+Where:
+RRi = Individual RR interval
+RRmean = Mean RR interval
+N = Number of intervals
+Lower HRV is often associated with higher stress and pain levels.
+3. Skin Temperature Change
+Pain and inflammation can cause localized temperature changes.
+ΔT = Tlocal − Tbaseline
+
+Where:
+ΔT = Temperature difference
+Tlocal = Measured skin temperature
+Tbaseline = Baseline skin temperature
+Example:
+ΔT = 37.8 − 36.5 = 1.3 °C
+4. Galvanic Skin Response (GSR)
+Skin conductance increases with sympathetic nervous system activation.
+GSR = 1 / R
+Where:
+GSR = Skin conductance (Siemens)
+R = Skin resistance (Ohms)
+Pain increases sweating, which decreases resistance and increases conductance.
+5. Electromyography (EMG)
+Muscle activity is quantified using the Root Mean Square (RMS) value of the EMG signal.
+EMG_RMS = sqrt( (1/N) * Σ(xi^2) )
+Where:
+xi = EMG signal amplitude
+N = Number of samples
+Higher RMS values may indicate muscle guarding or spasm associated with pain.
+6. Electroencephalography (EEG) Power
+EEG activity related to pain can be analyzed using Power Spectral Density (PSD).
+P(f) = |X(f)|^2
+Where:
+X(f) = Fourier transform of the EEG signal
+P(f) = Power at frequency f
+Pain-related activity often involves changes in:
+Theta band (4–8 Hz)
+Beta band (13–30 Hz)
+Gamma band (>30 Hz)

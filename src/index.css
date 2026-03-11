@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Theme Variables ─── */
+:root {
+  /* Dark theme (default) */
+  --bg-body: #121416;
+  --text-primary: rgba(255, 255, 255, 0.85);
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --text-tertiary: rgba(255, 255, 255, 0.4);
+  --text-muted: rgba(255, 255, 255, 0.3);
+  --text-faint: rgba(255, 255, 255, 0.2);
+  --text-ghost: rgba(255, 255, 255, 0.15);
+  --text-heading: #fff;
+
+  --surface-card: rgba(255, 255, 255, 0.03);
+  --surface-card-hover: rgba(255, 255, 255, 0.05);
+  --surface-input: rgba(255, 255, 255, 0.04);
+  --surface-input-focus: rgba(94, 204, 204, 0.04);
+  --surface-formula: rgba(94, 204, 204, 0.04);
+  --surface-formula-block: rgba(0, 0, 0, 0.3);
+  --surface-modal: rgba(22, 24, 28, 0.92);
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --border-focus: rgba(94, 204, 204, 0.4);
+  --border-accent-subtle: rgba(94, 204, 204, 0.15);
+
+  --bar-track: rgba(255, 255, 255, 0.06);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.25);
+  --shadow-modal: 0 40px 100px rgba(0, 0, 0, 0.6);
+
+  --accent: #5ecccc;
+  --accent-bg: rgba(94, 204, 204, 0.08);
+  --accent-bg-hover: rgba(94, 204, 204, 0.14);
+  --accent-glow: rgba(94, 204, 204, 0.06);
+  --accent-focus-ring: rgba(94, 204, 204, 0.08);
+
+  --overlay-bg: rgba(0, 0, 0, 0.55);
+  --triangle-stroke: rgba(255, 255, 255, 0.45);
+
+  --selection-bg: rgba(94, 204, 204, 0.25);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.1);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.2);
+
+  --gauge-marker: rgba(255, 255, 255, 0.35);
+  --gauge-track: rgba(255, 255, 255, 0.06);
+  --gauge-needle: #fff;
+  --gauge-needle-glow: rgba(255, 255, 255, 0.6);
+}
+
+/* Light theme — warm, muted, eye-comfortable */
+[data-theme='light'] {
+  --bg-body: #cec7bb;
+  --text-primary: #3b3228;
+  --text-secondary: rgba(59, 50, 40, 0.65);
+  --text-tertiary: rgba(59, 50, 40, 0.48);
+  --text-muted: rgba(59, 50, 40, 0.36);
+  --text-faint: rgba(59, 50, 40, 0.2);
+  --text-ghost: rgba(59, 50, 40, 0.1);
+  --text-heading: #2e2519;
+
+  --surface-card: rgba(240, 236, 228, 0.72);
+  --surface-card-hover: rgba(244, 240, 233, 0.85);
+  --surface-input: rgba(59, 50, 40, 0.05);
+  --surface-input-focus: rgba(58, 138, 127, 0.07);
+  --surface-formula: rgba(58, 138, 127, 0.06);
+  --surface-formula-block: rgba(59, 50, 40, 0.04);
+  --surface-modal: rgba(242, 238, 231, 0.97);
+
+  --border-subtle: rgba(59, 50, 40, 0.08);
+  --border-light: rgba(59, 50, 40, 0.1);
+  --border-medium: rgba(59, 50, 40, 0.13);
+  --border-focus: rgba(58, 138, 127, 0.4);
+  --border-accent-subtle: rgba(58, 138, 127, 0.16);
+
+  --bar-track: rgba(59, 50, 40, 0.07);
+  --shadow-card: 0 2px 12px rgba(59, 50, 40, 0.06);
+  --shadow-card-hover: 0 4px 20px rgba(59, 50, 40, 0.1);
+  --shadow-modal: 0 20px 60px rgba(59, 50, 40, 0.14);
+
+  --accent: #3a8a7f;
+  --accent-bg: rgba(58, 138, 127, 0.08);
+  --accent-bg-hover: rgba(58, 138, 127, 0.13);
+  --accent-glow: rgba(58, 138, 127, 0.05);
+  --accent-focus-ring: rgba(58, 138, 127, 0.1);
+
+  --overlay-bg: rgba(59, 50, 40, 0.25);
+  --triangle-stroke: rgba(0, 0, 0, 0.9);
+
+  --selection-bg: rgba(58, 138, 127, 0.18);
+  --scrollbar-thumb: rgba(59, 50, 40, 0.08);
+  --scrollbar-thumb-hover: rgba(59, 50, 40, 0.15);
+
+  --gauge-marker: rgba(59, 50, 40, 0.28);
+  --gauge-track: rgba(59, 50, 40, 0.06);
+  --gauge-needle: #3b3228;
+  --gauge-needle-glow: rgba(59, 50, 40, 0.2);
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-body);
+  color: var(--text-primary);
+  line-height: 1.6;
+  text-wrap: pretty;
+  transition: background 0.8s ease, color 0.8s ease;
+}
+
+/* Selection */
+::selection {
+  background: var(--selection-bg);
+  color: var(--text-heading);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}

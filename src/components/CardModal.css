@@ -1,0 +1,473 @@
+/* ─── Modal Overlay ─── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    transition: background 0.4s ease, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease;
+}
+
+.modal-overlay--visible {
+    background: var(--overlay-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.modal-overlay--closing {
+    transition: background 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+/* ─── 3D Perspective Wrapper ─── */
+.modal-perspective-wrapper {
+    perspective: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 520px;
+    padding: 1rem;
+}
+
+/* ─── Modal Panel ─── */
+.modal-panel {
+    position: relative;
+    width: 100%;
+    background: var(--surface-modal);
+    border: 1px solid var(--border-light);
+    border-radius: 24px;
+    padding: 2rem;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    box-shadow:
+        0 0 0 1px var(--border-subtle),
+        var(--shadow-modal),
+        0 0 80px var(--accent-glow);
+    transform-style: preserve-3d;
+    transform: translateZ(-200px) rotateX(8deg) scale(0.85);
+    opacity: 0;
+    transition:
+        transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.4s ease,
+        box-shadow 0.5s ease;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.modal-panel--visible {
+    transform: translateZ(60px) rotateX(0deg) scale(1);
+    opacity: 1;
+    box-shadow:
+        0 0 0 1px var(--border-subtle),
+        var(--shadow-modal),
+        0 0 120px var(--accent-glow),
+        0 0 1px 0 var(--border-accent-subtle);
+}
+
+/* Scrollbar inside modal */
+.modal-panel::-webkit-scrollbar {
+    width: 4px;
+}
+
+.modal-panel::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 2px;
+}
+
+/* ─── Close Button ─── */
+.modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    z-index: 2;
+}
+
+.modal-close:hover {
+    background: var(--surface-card-hover);
+    color: var(--text-primary);
+    border-color: var(--border-medium);
+    transform: scale(1.05);
+}
+
+/* ─── Modal Header ─── */
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    padding-right: 2.5rem;
+}
+
+.modal-icon {
+    font-size: 2rem;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-bg);
+    border: 1px solid var(--border-accent-subtle);
+    border-radius: 16px;
+    flex-shrink: 0;
+    color: var(--accent);
+}
+
+.modal-header__text {
+    flex: 1;
+}
+
+.modal-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 4px;
+}
+
+.modal-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    letter-spacing: -0.01em;
+    transition: color 0.8s ease;
+}
+
+.modal-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 8px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.modal-badge--direct {
+    background: rgba(74, 222, 128, 0.12);
+    color: #4ade80;
+}
+
+.modal-badge--inverse {
+    background: rgba(168, 85, 247, 0.12);
+    color: #a855f7;
+}
+
+.modal-badge--mixed {
+    background: rgba(251, 146, 60, 0.12);
+    color: #fb923c;
+}
+
+[data-theme='light'] .modal-badge--direct {
+    background: rgba(58, 138, 127, 0.1);
+    color: #3a8a7f;
+}
+
+[data-theme='light'] .modal-badge--inverse {
+    background: rgba(120, 80, 160, 0.1);
+    color: #7856a0;
+}
+
+[data-theme='light'] .modal-badge--mixed {
+    background: rgba(160, 100, 50, 0.1);
+    color: #9a6830;
+}
+
+.modal-desc {
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+    transition: color 0.8s ease;
+}
+
+/* ─── Formula Section ─── */
+.modal-formula-section {
+    margin-bottom: 1.75rem;
+    padding: 1.25rem;
+    background: var(--surface-formula);
+    border: 1px solid var(--border-accent-subtle);
+    border-radius: 16px;
+    transition: background 0.8s ease, border-color 0.8s ease;
+}
+
+.modal-formula-label,
+.modal-inputs-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+    transition: color 0.8s ease;
+}
+
+.modal-formula-block {
+    padding: 0.85rem 1rem;
+    background: var(--surface-formula-block);
+    border-radius: 10px;
+    margin-bottom: 0.75rem;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    overflow-x: auto;
+    transition: background 0.8s ease;
+}
+
+.modal-formula-text {
+    font-size: 1.05rem;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.modal-formula-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    transition: color 0.8s ease;
+}
+
+/* ─── Input Fields ─── */
+.modal-inputs-section {
+    margin-bottom: 1.75rem;
+}
+
+.modal-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+}
+
+.modal-field {
+    flex: 1;
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-field__label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: color 0.8s ease;
+}
+
+.modal-field__unit {
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    font-weight: 400;
+    transition: color 0.8s ease;
+}
+
+.modal-field__input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--surface-input);
+    border: 1px solid var(--border-medium);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-variant-numeric: tabular-nums;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.8s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.modal-field__input::placeholder {
+    color: var(--text-ghost);
+}
+
+.modal-field__input:focus {
+    border-color: var(--border-focus);
+    background: var(--surface-input-focus);
+    box-shadow: 0 0 0 4px var(--accent-focus-ring);
+}
+
+/* Remove spinner arrows */
+.modal-field__input::-webkit-inner-spin-button,
+.modal-field__input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.modal-field__input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* ─── Results Section ─── */
+.modal-results-section {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-subtle);
+    transition: border-color 0.8s ease;
+}
+
+.modal-results-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    transition: color 0.8s ease;
+}
+
+.modal-results-grid {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ── Score Circle ── */
+.modal-score-circle-wrap {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    flex-shrink: 0;
+}
+
+.modal-score-circle {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.modal-score-circle__track {
+    stroke: var(--bar-track);
+    transition: stroke 0.8s ease;
+}
+
+.modal-score-circle__fill {
+    stroke: var(--accent);
+    transition: stroke-dashoffset 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), stroke 0.8s ease;
+}
+
+.modal-score-circle__text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.modal-score-circle__value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.modal-score-circle__max {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+    font-weight: 500;
+    transition: color 0.8s ease;
+}
+
+/* ── Stats ── */
+.modal-stats {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.modal-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.85rem;
+    background: var(--surface-formula);
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    transition: background 0.8s ease, border-color 0.8s ease;
+}
+
+.modal-stat__label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: color 0.8s ease;
+}
+
+.modal-stat__value {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.8s ease;
+}
+
+.modal-stat__value--pct {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* ── Progress Bar ── */
+.modal-score-bar {
+    margin-top: 0.25rem;
+    height: 8px;
+    background: var(--bar-track);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: background 0.8s ease;
+}
+
+.modal-score-bar__fill {
+    height: 100%;
+    background: linear-gradient(90deg, #5ecccc, #facc15, #ef4444);
+    border-radius: 8px;
+    transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+    .modal-perspective-wrapper {
+        max-width: 100%;
+        padding: 0.75rem;
+    }
+
+    .modal-panel {
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+
+    .modal-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.6rem;
+    }
+
+    .modal-title {
+        font-size: 1.1rem;
+    }
+
+    .modal-fields {
+        flex-direction: column;
+    }
+}
