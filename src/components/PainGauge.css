@@ -8,6 +8,10 @@
   border-radius: 24px;
   backdrop-filter: blur(20px);
   position: sticky;
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 350px;
   top: 2rem;
   transition: background 0.8s ease, border-color 0.8s ease;
 }

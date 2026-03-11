@@ -41,6 +41,8 @@ html {
   --border-focus: rgba(94, 204, 204, 0.4);
   --border-accent-subtle: rgba(94, 204, 204, 0.15);
 
+  --glow-rgb: 168, 85, 247;
+
   --bar-track: rgba(255, 255, 255, 0.06);
   --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.2);
   --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.25);
@@ -90,6 +92,8 @@ html {
   --card-border: rgba(59, 50, 40, 0.48);
   --border-focus: rgba(58, 138, 127, 0.4);
   --border-accent-subtle: rgba(58, 138, 127, 0.16);
+
+  --glow-rgb: 180, 110, 40;
 
   --bar-track: rgba(59, 50, 40, 0.07);
   --shadow-card: 0 2px 12px rgba(59, 50, 40, 0.06);

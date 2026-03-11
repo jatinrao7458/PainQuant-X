@@ -1,9 +1,14 @@
 .score-breakdown {
+    position: relative;
     background: var(--surface-card);
     border: 1px solid var(--card-border);
     border-radius: 20px;
     padding: 1.5rem;
     backdrop-filter: blur(16px);
+    --glow-x: 50%;
+    --glow-y: 50%;
+    --glow-intensity: 0;
+    --glow-radius: 350px;
     transition: background 0.8s ease, border-color 0.8s ease;
 }
 

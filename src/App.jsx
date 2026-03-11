@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import InputCard from './components/InputCard';
 import CardModal from './components/CardModal';
 import PainGauge from './components/PainGauge';
@@ -14,6 +14,7 @@ import {
   mapToPainLevel,
   VARIABLES,
 } from './utils/painAlgorithm';
+import useCursorGlow from './hooks/useCursorGlow';
 import './App.css';
 
 const defaultValues = {
@@ -61,12 +62,15 @@ function computeResults(values) {
 }
 
 export default function App() {
+  const mainRef = useRef(null);
   const [values, setValues] = useState(defaultValues);
   const [activeCardIndex, setActiveCardIndex] = useState(null);
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('painquant-x-theme') || localStorage.getItem('painscope-theme') || 'dark';
   });
   const { results, totalScore, painLevel } = computeResults(values);
+
+  useCursorGlow(mainRef);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -147,7 +151,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="app-main">
+      <main className="app-main" ref={mainRef}>
         <section className="inputs-section">
           <h2 className="section-label">Physiological Inputs</h2>
           <div className="inputs-grid">

@@ -427,7 +427,7 @@
 }
 
 .inputs-grid:hover .input-card:not(:hover) {
-  filter: blur(1.8px);
+  filter: blur(0.8px);
   opacity: 0.72;
 }
 
@@ -493,4 +493,67 @@
     padding: 0.45rem 0.85rem;
     font-size: 0.75rem;
   }
+}
+
+/* ─── Cursor Glow: Border Glow Effect ─── */
+.input-card::after,
+.pain-gauge::after,
+.score-breakdown::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 5px;
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(var(--glow-rgb), calc(var(--glow-intensity) * 0.9)) 0%,
+    rgba(var(--glow-rgb), calc(var(--glow-intensity) * 0.45)) 30%,
+    transparent 60%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+/* ─── Cursor Glow: Spotlight ─── */
+.cursor-spotlight {
+  position: fixed;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(var(--glow-rgb), 0.12) 0%,
+    rgba(var(--glow-rgb), 0.06) 15%,
+    rgba(var(--glow-rgb), 0.03) 30%,
+    rgba(var(--glow-rgb), 0.015) 45%,
+    transparent 65%
+  );
+  z-index: 200;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  transition: opacity 0.35s ease;
+  will-change: transform, opacity;
+}
+
+[data-theme='light'] .cursor-spotlight {
+  mix-blend-mode: multiply;
+  background: radial-gradient(
+    circle,
+    rgba(var(--glow-rgb), 0.18) 0%,
+    rgba(var(--glow-rgb), 0.09) 15%,
+    rgba(var(--glow-rgb), 0.04) 30%,
+    rgba(var(--glow-rgb), 0.02) 45%,
+    transparent 65%
+  );
 }
