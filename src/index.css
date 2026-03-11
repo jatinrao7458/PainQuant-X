@@ -37,6 +37,7 @@ html {
   --border-subtle: rgba(255, 255, 255, 0.06);
   --border-light: rgba(255, 255, 255, 0.08);
   --border-medium: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.42);
   --border-focus: rgba(94, 204, 204, 0.4);
   --border-accent-subtle: rgba(94, 204, 204, 0.15);
 
@@ -86,6 +87,7 @@ html {
   --border-subtle: rgba(59, 50, 40, 0.08);
   --border-light: rgba(59, 50, 40, 0.1);
   --border-medium: rgba(59, 50, 40, 0.13);
+  --card-border: rgba(59, 50, 40, 0.48);
   --border-focus: rgba(58, 138, 127, 0.4);
   --border-accent-subtle: rgba(58, 138, 127, 0.16);
 
@@ -101,7 +103,7 @@ html {
   --accent-focus-ring: rgba(58, 138, 127, 0.1);
 
   --overlay-bg: rgba(59, 50, 40, 0.25);
-  --triangle-stroke: rgba(0, 0, 0, 0.9);
+  --triangle-stroke: rgba(0, 0, 0, 0.5);
 
   --selection-bg: rgba(58, 138, 127, 0.18);
   --scrollbar-thumb: rgba(59, 50, 40, 0.08);

@@ -64,13 +64,13 @@ export default function App() {
   const [values, setValues] = useState(defaultValues);
   const [activeCardIndex, setActiveCardIndex] = useState(null);
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('painscope-theme') || 'dark';
+    return localStorage.getItem('painquant-x-theme') || localStorage.getItem('painscope-theme') || 'dark';
   });
   const { results, totalScore, painLevel } = computeResults(values);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('painscope-theme', theme);
+    localStorage.setItem('painquant-x-theme', theme);
   }, [theme]);
 
   const toggleTheme = useCallback(() => {
@@ -129,7 +129,7 @@ export default function App() {
           <div>
             <h1 className="app-title">
               <span className="app-title__icon">⊹</span>
-              PainScope
+              PainQuant-X
             </h1>
             <p className="app-subtitle">Physiological Pain Quantification</p>
           </div>
